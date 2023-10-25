@@ -2,10 +2,13 @@
 #
 # Decode the output of a CueCat scanner
 # 
-# Rewritten for Python 3 based on
+# Rewritten for Python 3 
+# based on code found on the web, e.g.
 # https://linas.org/banned/cuecat/cc.index.html
+# http://www.beau.lib.la.us/~jmorris/linux/cuecat/
 #
-# Original author unkownn
+# Original author $UNKNOWN (maybe you, @inklesspen?)
+#
 # This code is STILL public domain code.
 
 import sys
