@@ -1,8 +1,8 @@
 # CueCat helper scripts
 
-I (still) have a [CueCat](https://en.wikipedia.org/wiki/CueCat) scanner. I (still) have lots of books. I (still) want to use a cute cat scanner to catalog the books.
+I have a [CueCat](https://en.wikipedia.org/wiki/CueCat) scanner. I have lots of books. I want to use a cute cat scanner to catalog the books.
 
-Yes, there are numerous barcode scanners for sale that are probably better/cheaper than the CueCat but are they shaped like a cat? No. 
+Yes, there are numerous barcode scanners for sale that are probably better/cheaper than the CueCat but are they shaped like a cat? No!
 
 So, here we are. This repo is about making practical use of an impractical device from 23 years ago. Meow.
 
@@ -12,18 +12,18 @@ To scan and decode in real-time, run this script without arguments to enter an i
 
 ```
 $ python3 cuecat.py
-Scan/Enter> ^[[21;3~.C3nZC3nZC3n2CNf3Chn0DxnY.cGf2.ENr7C3fXDxr2DhfZENzXENnZ.
+Scan/Enter> .C3nZC3nZC3n2CNf3Chn0DxnY.cGf2.ENr7C3fXDxr2DhfZENzXENnZ.
 Serial: 000000005124307601
 Type: IB5
 Code: 978022675720952900
-Scan/Enter> ^[[21;3~.C3nZC3nZC3n2CNf3Chn0DxnY.cGen.ENr7C3bZC3f3E3f0Cq.
+Scan/Enter> .C3nZC3nZC3n2CNf3Chn0DxnY.cGen.ENr7C3bZC3f3E3f0Cq.
 Serial: 000000005124307601
 Type: IBN
 Code: 9780300248272
 Scan/Enter>
 ```
 
-Otherwise, provide one line of output from the CueCat scanner as an argument. If the input is a complete barcode, the output will include Serial number (of your scanner), the Type of code (e.g. IBN for books), and the Code (e.g., 13-digit ISBN number):
+Otherwise, provide a CueCat-encoded string as an argument. If the string is a complete line of CueCat output, the script will decode the Serial number (of your scanner), the Type of code (e.g. IBN for books), and the Code (e.g., 13-digit ISBN number):
 
 ```
 $ python3 cuecat.py .C3nZC3nZC3n2CNf3Chn0DxnY.cGen.ENr7C3bZC3f3E3f0Cq.
@@ -32,14 +32,14 @@ Type: IBN
 Code: 9780300248272
 ```
 
-Alternatively, you can trim out just the code and the script will return the decoded string:
+Alternatively, you can trim out just one component and the script will attempt to decode just that substring:
 
 ```
 $ python3 cuecat.py ENr7C3bZC3f3E3f0Cq
 9780300248272
 ```
 
-With the help of [isbntools](https://github.com/xlcnd/isbntools), you can retrieve book metadata in one line:
+With the help of [isbntools](https://github.com/xlcnd/isbntools), you can now retrieve book metadata in one line:
 
 ```
 $ python3 cuecat.py ENr7C3bZC3f3E3f0Cq | isbn_meta openl bibtex
@@ -54,7 +54,7 @@ $ python3 cuecat.py ENr7C3bZC3f3E3f0Cq | isbn_meta openl bibtex
 
 ## cat2bib.sh
 
-My workflow involves scanning a bunch of barcodes into a plaintext file. Each line of the file contains the raw output from the CueCat scanner. Next, I decode in a batch and save the metadata in a BibTeX file for easy import into Zotero, e.g.,
+My workflow involves scanning a bunch of barcodes into a plaintext file. Each line of the file contains the raw output from the CueCat scanner. This helper script will decode the batch and write the corresponding metadata to a BibTeX file for easy import into Zotero, e.g.,
 
 ```
 $ ./cat2bib.sh cuecat_output.txt > cuecat.bib
@@ -62,7 +62,7 @@ $ ./cat2bib.sh cuecat_output.txt > cuecat.bib
 
 ## Attribution
 
-The CueCat decoder script is based on code that has been floating around the web for a long time without attribution. (NB: I believe the original author may be @inklesspen!). For this version, I updated the code for Python3 compatibility.
+The CueCat decoder script is based on code that has been floating around the web for a long time without attribution. (NB: I now believe the original author may be @inklesspen -- watch this space). For the current version, I tweaked the code for Python3 compatibility and added a helper script for batch decoding.
 
 ## Further reading
 
