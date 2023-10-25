@@ -71,6 +71,7 @@ For more technical information about the CueCat scanner:
 - http://www.beau.lib.la.us/~jmorris/linux/cuecat/
 - https://linas.org/banned/cuecat/cc.index.html
 - https://www.instructables.com/Arduino-and-CueCat-barcode-scanner/
+- http://www.cexx.org/cuecat.htm
 
 For more background on the meaning of the ISBN barcodes:
 - "[ISBN Barcodes: Breakdown of a Bookland EAN Barcode](https://www.isbn-us.com/isbn-barcodes-breakdown-bookland-ean-barcode/)", Publisher Services, November 30, 2015.
