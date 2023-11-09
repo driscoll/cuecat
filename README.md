@@ -52,12 +52,18 @@ $ python3 cuecat.py ENr7C3bZC3f3E3f0Cq | isbn_meta openl bibtex
 }
 ```
 
-## cat2bib.sh
+## cat2bib.py
 
 My workflow involves scanning a bunch of barcodes into a plaintext file. Each line of the file contains the raw output from the CueCat scanner. This helper script will decode the batch and write the corresponding metadata to a BibTeX file for easy import into Zotero, e.g.,
 
 ```
-$ ./cat2bib.sh cuecat_output.txt > cuecat.bib
+$ python3 ./cat2bib.py cuecat_output.txt > cuecat.bib
+```
+
+Alternatively, you may run cat2bib interactively. Results will be printed to standard output.
+
+```
+$ python3 ./cat2bib.py
 ```
 
 ## Attribution
