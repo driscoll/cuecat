@@ -30,14 +30,17 @@ if __name__ == "__main__":
         m = cuecat_regex.search(encoded_input)
         if m:
             if len(m.groups()) == 3:
-                isbn_encoded = m.group(3)
-                print("ISBN (encoded): {}".format(isbn_encoded), file=sys.stderr)
-                isbn_decoded = cuecat.decode(isbn_encoded)
-                isbn = isbnlib.get_canonical_isbn(isbn_decoded)
-                print("ISBN (decoded): {}".format(isbn), file=sys.stderr)
-                metadata = isbnlib.meta(isbn, DEFAULT_SERVICE)
-                print("Title: {}".format(metadata.get("Title")), file=sys.stderr)
-                bibtex = to_bibtex(metadata)
-                print(bibtex, file=outfile)
+                    isbn_encoded = m.group(3)
+                    print("ISBN (encoded): {}".format(isbn_encoded), file=sys.stderr)
+                    isbn_decoded = cuecat.decode(isbn_encoded)
+                    isbn = isbnlib.get_canonical_isbn(isbn_decoded)
+                    print("ISBN (decoded): {}".format(isbn), file=sys.stderr)
+                    try:
+                        metadata = isbnlib.meta(isbn, DEFAULT_SERVICE)
+                        print("Title: {}".format(metadata.get("Title")), file=sys.stderr)
+                        bibtex = to_bibtex(metadata)
+                        print(bibtex, file=outfile)
+                    except:
+                        print("Could not retrieve metadata for ISBN: {}".format(isbn), file=sys.stderr)
         else:
             print("Not valid CueCat output: ".format(encoded_input), file=sys.stderr)
