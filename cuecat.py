@@ -51,7 +51,7 @@ if __name__ == '__main__':
     else:
         while 1:
             try:
-                s = input()
+                s = input("Scan/Enter> ")
             except EOFError:
                 break
             if not s: break
